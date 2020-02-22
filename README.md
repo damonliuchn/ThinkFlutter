@@ -47,9 +47,11 @@
 [dart server 源码地址][2]
 
 ## TODO
-1. rxdart
-2. redux
-3. isolate flutter web的问题
+1. 添加android工程 支持打包aar和apk 
+2. tool改名others
+3. rxdart
+4. redux
+5. isolate flutter web的问题
 
 
 ## Thanks
