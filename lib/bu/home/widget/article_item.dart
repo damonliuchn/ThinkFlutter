@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gank_flutter/bu/home/model/article.dart';
 import 'package:gank_flutter/ui/color.dart';
-import 'package:gank_flutter/ui/icons/iconfont.dart';
+import 'package:gank_flutter/ui/iconfont.dart';
 import 'package:gank_flutter/util/host_util.dart';
 
 class ArticleItem extends StatefulWidget {

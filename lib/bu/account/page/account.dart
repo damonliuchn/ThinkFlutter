@@ -1,7 +1,7 @@
 import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
 import 'package:gank_flutter/event/theme_color_event.dart';
-import 'package:gank_flutter/ui/icons/iconfont.dart';
+import 'package:gank_flutter/ui/iconfont.dart';
 import 'package:gank_flutter/util/common_util.dart';
 import 'package:gank_flutter/ui/color.dart';
 import 'package:gank_flutter/util/log_util.dart';
@@ -91,7 +91,7 @@ class _AccountPageState extends State<AccountPage> {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, "/about");
+              Navigator.pushNamed(context, "/upload");
 //              Navigator.push(context, MaterialPageRoute(builder: (context) => (About())));
             },
             child: Container(

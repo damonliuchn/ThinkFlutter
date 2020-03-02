@@ -9,6 +9,7 @@ part 'home_api.g.dart';
 abstract class HomeApi {
   //factory HomeApi(Dio dio, {String baseUrl}) = _HomeApi;
   factory HomeApi() => _HomeApi(HttpManager.getInstance());
+
   //todo 下面代码在web中为null
   //static final HomeApi instance = _HomeApi(HttpManager.getInstance());
 

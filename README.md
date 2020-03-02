@@ -18,6 +18,11 @@
 15. isolate
 16. cached_network_image
 17. 本地图片、icon fonts的使用
+18. 网络请求封装loading
+19. 批量网络请求
+20. 网络请求轮询
+21. 图片选择、拍照
+22. 图片上传
 
 ## 二、启动
 ```java
@@ -47,11 +52,10 @@
 [dart server 源码地址][2]
 
 ## TODO
-1. 添加android工程 支持打包aar和apk 
-2. tool改名others
-3. rxdart
-4. redux
-5. isolate flutter web的问题
+1. 添加android工程 支持打包aar和apk
+2. isolate flutter web的问题
+3. [可选]rxdart
+4. [可选]redux
 
 
 ## Thanks
