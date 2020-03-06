@@ -40,8 +40,26 @@ class _ArticleListState extends State<ArticleList>
 
   Future<void> _initData(int page) async {
     //var newList = (await HomeApi().getTasks(widget.category, page.toString())).results;
-    HttpManager.request([HomeApi().getTasks("App", page.toString())],true,(results){
-      var newList = (results[0] as HttpArticle).results;
+//    HttpManager.request([HomeApi().getTasks("App", page.toString())],true,(results){
+//      var newList = (results[0] as HttpArticle).results;
+//      setState(() {
+//        if (page == 1) {
+//          _dataList.clear();
+//        }
+//        _dataList.addAll(newList);
+//        if (newList == null || newList.length == 0) {
+//          _load = 3;
+//        }else{
+//          _load = 0;
+//        }
+//        _page = ++page;
+//      });
+//    });
+
+    HttpArticle article = await HttpManager.request(HomeApi().getTasks("App", page.toString()),true);
+    HttpArticle article2 = await HttpManager.request(HomeApi().getTasks("App", page.toString()),true);
+    if(article!=null && !article.error){
+      var newList = article.results;
       setState(() {
         if (page == 1) {
           _dataList.clear();
@@ -54,7 +72,7 @@ class _ArticleListState extends State<ArticleList>
         }
         _page = ++page;
       });
-    });
+    }
   }
 
   @override

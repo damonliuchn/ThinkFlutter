@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
+import 'package:gank_flutter/bu/home/model/article.dart';
 import 'package:gank_flutter/model/http_result.dart';
 
 class HttpManager {
@@ -24,12 +25,12 @@ class HttpManager {
       dio = new Dio(options);
       if (dio.httpClientAdapter is DefaultHttpClientAdapter) {
         //在这里配置 代理 用于抓包
-//        (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
-//            (client) {
-//          client.findProxy = (uri) {
-//            return "PROXY 192.168.1.8:8888";
-//          };
-//        };
+        (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+            (client) {
+          client.findProxy = (uri) {
+            return "PROXY 192.168.1.8:8888";
+          };
+        };
       }
       dio.interceptors
           .add(InterceptorsWrapper(onRequest: (RequestOptions options) {
@@ -43,37 +44,27 @@ class HttpManager {
     return dio;
   }
 
-  /** 批量请求 **/
-  static void request(
-      Iterable<Future> futures, bool loading, Function success) {
+  static Future<T>   request<T extends HttpResult> (Future<T> future, bool loading) async{
     if (loading != null && loading) {
       BotToast.showLoading();
     }
-    Future.wait(futures).then((results) {
-      var isTrueSuccess = true;
-      for (dynamic x in results) {
-        if (!(x is HttpResult) || x.error) {
-          BotToast.showText(text: "服务器错误");
-          isTrueSuccess = false;
-          break;
-        }
+    T article;
+    try{
+      article = await future;
+      if(article.error){
+        BotToast.showText(text: "服务器错误");
       }
-      if (isTrueSuccess && success!=null) {
-        success(results);
-      }
-      if (loading != null && loading) {
-        BotToast.closeAllLoading();
-      }
-    }).catchError((e) {
+    }catch(e){
       if (e is DioError) {
         BotToast.showText(text: e.message);
       } else {
         BotToast.showText(text: e.toString());
       }
-      if (loading != null && loading) {
-        BotToast.closeAllLoading();
-      }
-    });
+    }
+    if (loading != null && loading) {
+      BotToast.closeAllLoading();
+    }
+    return article;
   }
 
   /** 轮询 **/

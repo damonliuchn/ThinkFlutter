@@ -490,7 +490,7 @@ packages:
   pkg_network:
     dependency: "direct main"
     description:
-      path: "module\\pkg_network"
+      path: "module/pkg_network"
       relative: true
     source: path
     version: "0.0.1"
