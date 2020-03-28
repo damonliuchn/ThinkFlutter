@@ -6,7 +6,8 @@ part 'http_result.g.dart';
 class HttpResult {
   //List<Article> results;
   bool error;
-  HttpResult({this.error});
-  factory HttpResult.fromJson(Map<String, dynamic> json) => _$HttpResultFromJson(json);
+  bool error22;
+  HttpResult();
+  factory HttpResult.fromJson(Map<String, dynamic> json) => $HttpResultFromJson(json);
   Map<String, dynamic> toJson() => _$HttpResultToJson(this);
 }

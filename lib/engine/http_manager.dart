@@ -25,12 +25,12 @@ class HttpManager {
       dio = new Dio(options);
       if (dio.httpClientAdapter is DefaultHttpClientAdapter) {
         //在这里配置 代理 用于抓包
-        (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
-            (client) {
-          client.findProxy = (uri) {
-            return "PROXY 192.168.1.8:8888";
-          };
-        };
+//        (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+//            (client) {
+//          client.findProxy = (uri) {
+//            return "PROXY 192.168.1.8:8888";
+//          };
+//        };
       }
       dio.interceptors
           .add(InterceptorsWrapper(onRequest: (RequestOptions options) {

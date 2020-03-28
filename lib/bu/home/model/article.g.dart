@@ -38,11 +38,14 @@ HttpArticle _$HttpArticleFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Article.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-  )..error = json['error'] as bool;
+  )
+    ..error = json['error'] as bool
+    ..error22 = json['error22'] as bool;
 }
 
 Map<String, dynamic> _$HttpArticleToJson(HttpArticle instance) =>
     <String, dynamic>{
       'error': instance.error,
+      'error22': instance.error22,
       'results': instance.results,
     };

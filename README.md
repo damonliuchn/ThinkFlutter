@@ -27,7 +27,7 @@
 ## 二、启动
 ```java
 ./flutterw pub get
-./flutterw pub run build_runner build
+./flutterw pub run build_runner build --delete-conflicting-outputs
 ```
 
 
