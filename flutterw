@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 flutter_channel="beta"
-flutter_version="1.14.6"
+flutter_version="1.15.3"
 distribution_url="https://gitee.com/mirrors/Flutter.git"
 #https://github.com/flutter/flutter.git 如果下载太慢可以使用 https://gitee.com/mirrors/Flutter.git
 
