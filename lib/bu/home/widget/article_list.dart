@@ -1,4 +1,3 @@
-import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:gank_flutter/bu/home/api/home_api.dart';
 import 'package:gank_flutter/bu/home/model/article.dart';
@@ -39,40 +38,28 @@ class _ArticleListState extends State<ArticleList>
   }
 
   Future<void> _initData(int page) async {
-    //var newList = (await HomeApi().getTasks(widget.category, page.toString())).results;
-//    HttpManager.request([HomeApi().getTasks("App", page.toString())],true,(results){
-//      var newList = (results[0] as HttpArticle).results;
-//      setState(() {
-//        if (page == 1) {
-//          _dataList.clear();
-//        }
-//        _dataList.addAll(newList);
-//        if (newList == null || newList.length == 0) {
-//          _load = 3;
-//        }else{
-//          _load = 0;
-//        }
-//        _page = ++page;
-//      });
-//    });
+    Map params = new Map();
+    params["page"] = page;
+    params["size"] = 10;
+    params["cate"] = widget.category;
 
-    HttpArticle article = await HttpManager.request(HomeApi().getTasks("App", page.toString()),true);
-    HttpArticle article2 = await HttpManager.request(HomeApi().getTasks("App", page.toString()),true);
-    if(article!=null && !article.error){
-      var newList = article.results;
-      setState(() {
-        if (page == 1) {
-          _dataList.clear();
-        }
-        _dataList.addAll(newList);
-        if (newList == null || newList.length == 0) {
-          _load = 3;
-        }else{
-          _load = 0;
-        }
-        _page = ++page;
-      });
-    }
+    //var res = await HttpUtils.get("/data/:cate/:size/:page", params);
+    //var newList = BaseBeanEntity.fromJsonList(res).getList<ArticleEntity>();
+    var newList = (await HomeApi().getTasks(widget.category, page.toString())).results;
+    //var newList = (await HomeApi(HttpManager.getInstance()).getTasks("all", "1")).results;
+
+    setState(() {
+      if (page == 1) {
+        _dataList.clear();
+      }
+      _dataList.addAll(newList);
+      if (newList == null || newList.length == 0) {
+        _load = 3;
+      }else{
+        _load = 0;
+      }
+      _page = ++page;
+    });
   }
 
   @override
